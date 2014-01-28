@@ -8,13 +8,43 @@
 
 #import "AppDelegate.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
+
 @implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
+}
+/* 페이스북... 연동
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Override point for customization after application launch.
+    [Parse setApplicationId:@"T4JC47GMzVl5a19lIQokMxxE8Nx5WheSeptT8346"
+                  clientKey:@"UIrh8jLMhDnpuxfSM11bVQyuvNqUmaqnfWHqCUY9"];
+    
+    [PFFacebookUtils initializeFacebook];
+    return YES;
+}
+ */
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     return YES;
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
